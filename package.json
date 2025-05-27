@@ -1,7 +1,7 @@
 {
   "name": "meu-projeto",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto desenvolvido em colaboração entre a alunos da turma 4ADS/2025 FATEC Guaratinguetá e a ONG UPA de Lorena, com o objetivo de promover impacto social positivo e contribuir ativamente para a causa da proteção animal.",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node --files src/server.ts",
@@ -16,7 +16,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.10.2",
     "bcrypt": "^6.0.0",
