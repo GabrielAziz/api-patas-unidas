@@ -1,7 +1,19 @@
 
 # API Patas Unidas
 
+API REST para o projeto Patas Unidas, que visa conectar ONGs de proteção animal com pessoas interessadas em adotar ou ajudar.
+
 Este projeto é uma API RESTful desenvolvida em Node.js, TypeScript, Express e Prisma, com autenticação JWT, validação de dados com ZOD e boas práticas de arquitetura.
+
+## Tecnologias Utilizadas
+
+- Node.js
+- Express
+- TypeScript
+- Prisma
+- PostgreSQL
+- JWT
+- ZOD
 
 ## Pré-requisitos
 
@@ -99,3 +111,15 @@ Abra uma issue ou entre em contato com o mantenedor do projeto.
 ---
 
 > **Dica:** Sempre reinicie o servidor após alterar arquivos de configuração ou tipos globais para evitar problemas de cache do TypeScript/ts-node.
+
+## Como Contribuir
+
+1. Faça um fork do repositório.
+2. Crie uma branch com sua feature: `git checkout -b minha-feature`.
+3. Faça commit das suas mudanças: `git commit -m 'Adiciona minha feature'`.
+4. Faça push para sua branch: `git push origin minha-feature`.
+5. Abra um pull request.
+
+## Licença
+
+MIT
