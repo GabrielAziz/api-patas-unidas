@@ -22,6 +22,15 @@ Este projeto é uma API RESTful desenvolvida em Node.js, TypeScript, Express e P
 - MySQL (v8+ recomendado)
 - Variáveis de ambiente configuradas (ver arquivo`.env`)
 
+## .ENV
+   ```
+   DATABASE_URL="mysql://usuario:senha@localhost:3306/patas_unidas"
+   PORT=3000
+   JWT_SECRET="your-secret"
+   NODE_ENV="development"
+   CORS_ORIGIN="http://localhost:3000"
+   ```
+
 ## Instalação
 
 1. **Clone o repositório:**
@@ -34,17 +43,38 @@ Este projeto é uma API RESTful desenvolvida em Node.js, TypeScript, Express e P
 2. **Instale as dependências:**
 
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 3. **Configure o banco de dados:**
 
-   - Crie um banco de dados MySQL (nome: `patas_unidas`).
-   - Configure o arquivo `.env` com as credenciais do banco e as chaves JWT:
+   - Instale o MySql
 
-     ```
-     DATABASE_URL="mysql://usuario:senha@localhost:3306/patas_unidas"
-     ```
+      ``` bash 
+      sudo apt update
+      sudo apt install mysql-server
+      ```
+
+   - Acesse o mysql como root
+      ```bash
+      sudo mysql
+      ```
+   - Crie um banco de dados MySQL (nome: `patas_unidas`):
+      ```sql
+      CREATE DATABASE patas_unidas;
+      ```
+
+   - Crie um usuario no banco:
+      ```sql
+      CREATE USER 'gabi'@'localhost' IDENTIFIED BY 'gabi1234';
+      GRANT ALL PRIVILEGES ON *.* TO 'gabi'@'localhost' WITH GRANT OPTION;
+      FLUSH PRIVILEGES;
+      ```
+
+   - Saia do Mysql
+      ```sql
+      EXIT;
+      ```
 
 4. **Rode as migrations do Prisma:**
 
@@ -100,9 +130,9 @@ O servidor será iniciado em `http://localhost:3000` (ou porta definida no seu `
 Você pode usar o [Postman](https://www.postman.com/) ou [Insomnia](https://insomnia.rest/) para testar as rotas da API.
 Exemplo de endpoints:
 
-- `POST /auth/login` — Login de usuário
-- `POST /users` — Cadastro de usuário
-- `GET /users` — Listar usuários (requer autenticação)
+- `POST /api/auth/login` — Login de usuário
+- `POST /api/users/new` — Cadastro de usuário
+- `GET api/users` — Listar usuários (requer autenticação)
 
 ## Dúvidas ou problemas?
 
