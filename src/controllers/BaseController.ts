@@ -4,51 +4,46 @@ import { BaseService, ServiceResponse } from '../services/BaseService';
 export abstract class BaseController<T> {
   protected abstract getService(): BaseService<T>;
 
-  findAll = async (req: Request, res: Response): Promise<void> => {
+  findAll = async (req: Request, res: Response): Promise<Response> => {
     const response: ServiceResponse<T> = await this.getService().findAll();
     if (!response.isSuccess) {
-      res.status(400).json({ errors: response.errors });
-      return;
+      return res.status(400).json({ errors: response.errors });
     }
-    res.status(200).json(response.collection);
+    return res.status(200).json(response.collection);
   };
 
-  findById = async (req: Request, res: Response): Promise<void> => {
+  findById = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
     const response: ServiceResponse<T> = await this.getService().findById(Number(id));
     if (!response.isSuccess) {
-      res.status(404).json({ errors: response.errors });
-      return;
+      return res.status(404).json({ errors: response.errors });
     }
-    res.status(200).json(response.record);
+    return res.status(200).json(response.record);
   };
 
-  create = async (req: Request, res: Response): Promise<void> => {
+  create = async (req: Request, res: Response): Promise<Response> => {
     const response: ServiceResponse<T> = await this.getService().create(req.body);
     if (!response.isSuccess) {
-      res.status(400).json({ errors: response.errors });
-      return;
+      return res.status(400).json({ errors: response.errors });
     }
-    res.status(201).json(response.record);
+    return res.status(201).json(response.record);
   };
 
-  update = async (req: Request, res: Response): Promise<void> => {
+  update = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
     const response: ServiceResponse<T> = await this.getService().update(Number(id), req.body);
     if (!response.isSuccess) {
-      res.status(400).json({ errors: response.errors });
-      return;
+      return res.status(400).json({ errors: response.errors });
     }
-    res.status(200).json(response.record);
+    return res.status(200).json(response.record);
   };
 
-  softDelete = async (req: Request, res: Response): Promise<void> => {
+  softDelete = async (req: Request, res: Response): Promise<Response> => {
     const { id } = req.params;
     const response: ServiceResponse<T> = await this.getService().softDelete(Number(id));
     if (!response.isSuccess) {
-      res.status(404).json({ errors: response.errors });
-      return;
+      return res.status(404).json({ errors: response.errors });
     }
-    res.status(204).send();
+    return res.status(204).send();
   };
 }

@@ -41,8 +41,6 @@ export const ensureAuthenticated: RequestHandler = async (req, res, next) => {
 };
 
 export const ensureAdministrator: RequestHandler = async (req, res, next) => {
-  await ensureAuthenticated(req, res, next);
-
   if (!req.user?.permissions?.canAdmin) {
     throw new AppError('Usuário não tem permissão de administrador', 403);
   }
@@ -50,8 +48,6 @@ export const ensureAdministrator: RequestHandler = async (req, res, next) => {
 };
 
 export const ensureAdopter: RequestHandler = async (req, res, next) => {
-  await ensureAuthenticated(req, res, next);
-
   if (!req.user?.permissions?.canAdopt) {
     throw new AppError('Usuário não tem permissão de adotante', 403);
   }
@@ -59,8 +55,6 @@ export const ensureAdopter: RequestHandler = async (req, res, next) => {
 };
 
 export const ensureAdministratorOrSelf: RequestHandler = async (req, res, next) => {
-  await ensureAuthenticated(req, res, next);
-
   const userId = Number(req.params.id);
   if (!req.user?.permissions?.canAdmin && req.user?.id !== userId) {
     throw new AppError('Usuário não tem permissão', 403);

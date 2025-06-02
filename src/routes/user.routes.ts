@@ -5,10 +5,12 @@ import { ensureAuthenticated, ensureAdministrator, ensureAdministratorOrSelf } f
 const userRoutes = Router();
 const userController = new UserController();
 
-userRoutes.get('/', ensureAdministrator, userController.findAll);               //GET all users
-userRoutes.get('/:id', ensureAdministratorOrSelf, userController.findById);     //GET single user
-userRoutes.post('/new', userController.create);                                 //CREATE user
-userRoutes.put('/edit/:id', ensureAdministratorOrSelf, userController.update);  //UPTADE user
-userRoutes.delete('/:id', ensureAdministratorOrSelf, userController.softDelete);
+userRoutes.use(ensureAuthenticated);
+
+userRoutes.get('/', ensureAdministrator, userController.findAll);                            // GET all users
+userRoutes.get('/:id', ensureAdministratorOrSelf, userController.findById);                  // GET single user
+userRoutes.post('/new', ensureAdministrator, userController.create);                         // CREATE user
+userRoutes.put('/edit/:id', ensureAdministratorOrSelf, userController.update);               // UPTADE user
+userRoutes.delete('/inactivate/:id', ensureAdministratorOrSelf, userController.softDelete);  // DELETE user
 
 export { userRoutes };
