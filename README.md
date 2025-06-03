@@ -145,10 +145,11 @@ Abra uma issue ou entre em contato com o mantenedor do projeto.
 ## Como Contribuir
 
 1. Faça um fork do repositório.
-2. Crie uma branch com sua feature: `git checkout -b minha-feature`.
-3. Faça commit das suas mudanças: `git commit -m 'Adiciona minha feature'`.
-4. Faça push para sua branch: `git push origin minha-feature`.
-5. Abra um pull request.
+2. Crie um remote upstream apontando pro repositorio oficial: `git remote add upstream git@github.com:GabrielAziz/api-patas-unidas.git`
+3. Crie uma branch com sua feature: `git checkout -b minha-feature`.
+4. Faça commit das suas mudanças: `git commit -m 'Adiciona minha feature'`.
+5. Faça push para sua branch: `git push origin minha-feature`.
+6. Abra um pull request.
 
 ## Licença
 
